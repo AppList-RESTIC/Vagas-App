@@ -1,4 +1,8 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "jsx": "react-jsx", // ou "react" para versões mais antigas
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
   "extends": "expo/tsconfig.base"
 }
