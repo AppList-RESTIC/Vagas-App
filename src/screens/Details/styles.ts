@@ -18,7 +18,7 @@ export const Header = styled.View`
 export const HeaderButtonContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px 0;
+  padding: 18px 0;
 `;
 export const ButtonIcon = styled.View``;
 export const ButtonText = styled.Text`
