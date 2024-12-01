@@ -25,6 +25,7 @@
     "react-native-screens": "~4.1.0",
     "react-native-web": "~0.19.10",
     "react-native-webview": "^13.12.2",
+    "restic36-app-vagacerta": "file:",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
