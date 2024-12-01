@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx", // ou "react" para versões mais antigas
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "esModuleInterop": true
   },

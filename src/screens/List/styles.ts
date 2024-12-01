@@ -13,7 +13,7 @@ export const Container = styled.View`
   width: 100%;
   padding: 16px;
   gap: 16px;
-  background-color: ${({theme})=>theme.COLORS.WHITE};
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
 export const ListContainer = styled.View`
@@ -24,9 +24,21 @@ export const ListContainer = styled.View`
 `;
 
 export const TextVagas = styled.Text`
-  font-size: ${({theme})=>theme.FONT_SIZE.SM}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   font-weight: 700;
   text-align: center;
-  color: ${({theme})=>theme.COLORS.BLACK};
+  color: ${({ theme }) => theme.COLORS.BLACK};
 `;
 
+export const EmptyContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const EmptyText = styled.Text`
+  font-size: 16px;
+  color: ${({ theme }) => theme.COLORS.GRAY_02};
+  text-align: center;
+`;

@@ -1,8 +1,9 @@
-// api.js (ou api.ts se você estiver usando TypeScript)
 import axios from 'axios';
 
+const BASE_URL = 'http://26.161.237.227:3000'; // Substitua pela URL correta da sua API
+
 const api = axios.create({
-  baseURL: 'http://26.161.237.227:3000', // Substitua pela URL correta da sua API
+  baseURL: BASE_URL,
 });
 
 // Função para buscar as vagas

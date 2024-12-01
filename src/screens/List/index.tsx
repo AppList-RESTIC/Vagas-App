@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Text, View, Image } from 'react-native';
+import { FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import { Wrapper, Container, ListContainer, TextVagas } from './styles';
+import { Wrapper, Container, ListContainer, TextVagas, EmptyContainer, EmptyText } from './styles'; // Importando os estilos
 import BGTop from '../../assets/BGTop.png';
 import Logo from '../../components/Logo';
 import VagaCard from '../../components/VagaCard';
-import BottomMenu from '../../components/BottomMenu/BottomMenu'; // Importar o componente de menu inferior
+import BottomMenu from '../../components/BottomMenu/BottomMenu';
+
+const BASE_URL = 'http://26.161.237.227:3000'; // Substitua pela URL correta da sua API
 
 export default function List() {
   const [vagas, setVagas] = useState([]);
 
-  useEffect(() => {
-    const fetchVagas = async () => {
-      try {
-        const response = await axios.get('http://26.161.237.227:3000/vagas'); // Substitua pelo seu IP
-        console.log(response.data); // Verifique se 'status' está presente nos dados retornados
-        setVagas(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar vagas: ", error);
-      }
-    };
+  const fetchVagas = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/vagas`); // Caminho para o endpoint da API
+      console.log(response.data);
+      setVagas(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar vagas: ", error);
+    }
+  };
 
+  useEffect(() => {
     fetchVagas();
   }, []);
 
@@ -29,7 +31,15 @@ export default function List() {
       <Image source={BGTop} style={{ maxHeight: 86 }} />
       <Container>
         <Logo />
-        <TextVagas>{vagas.length} vagas encontradas!</TextVagas> {/* Verifique o TextVagas */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+          <TextVagas>{vagas.length} vagas encontradas!</TextVagas>
+          <TouchableOpacity
+            style={{ marginLeft: 10 }}
+            onPress={fetchVagas}
+          >
+            <Text style={{ fontSize: 16, color: '#000' }}>🔄</Text>
+          </TouchableOpacity>
+        </View>
         <ListContainer>
           <FlatList
             data={vagas}
@@ -40,19 +50,19 @@ export default function List() {
                 title={item.titulo}
                 dataCreated={item.data_cadastro}
                 company={item.empresa}
-                status={item.status} // Adicione o status aqui
+                status={item.status}
               />
             )}
             showsVerticalScrollIndicator={true}
             ListEmptyComponent={() => (
-              <View>
-                <Text>Não há vagas disponíveis no momento.</Text> {/* Verifique o Text aqui */}
-              </View>
+              <EmptyContainer>
+                <EmptyText>Não há vagas disponíveis no momento.</EmptyText>
+              </EmptyContainer>
             )}
           />
         </ListContainer>
       </Container>
-      <BottomMenu /> {/* Adicionar o menu inferior aqui */}
+      <BottomMenu />
     </Wrapper>
   );
 }

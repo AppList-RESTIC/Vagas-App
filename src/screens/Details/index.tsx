@@ -7,6 +7,8 @@ import Logo from '../../components/Logo';
 import theme from '../../theme';
 import { Button } from '../../components/Button';
 
+const BASE_URL = 'http://26.161.237.227:3000'; // Substitua pela URL correta da sua API
+
 export default function Details({ route, navigation }) {
   const { id } = route.params;
   const [vaga, setVaga] = useState(null);
@@ -15,7 +17,7 @@ export default function Details({ route, navigation }) {
   useEffect(() => {
     const fetchVaga = async () => {
       try {
-        const response = await axios.get(`http://26.161.237.227:3000/vagas/${id}`); // Certifique-se de que o endpoint está correto
+        const response = await axios.get(`${BASE_URL}/vagas/${id}`); // Caminho para o endpoint da API
         setVaga(response.data);
       } catch (error) {
         console.error("Erro ao buscar vaga: ", error);

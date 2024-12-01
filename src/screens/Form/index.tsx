@@ -1,6 +1,5 @@
-// Código do arquivo FormScreen (index.tsx) referente ao formulário de cadastro
 import React, { useState } from "react";
-import { Image } from "react-native";
+import { Image, Alert } from "react-native";
 import {
   Wrapper,
   Container,
@@ -23,16 +22,26 @@ export default function FormScreen({ navigation }) {
 
   const handleSignUp = async () => {
     if (name && email && password) {
+      // Regex para validar email no formato xxx@site.com
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        Alert.alert('Erro', 'Por favor, insira um e-mail válido');
+        return;
+      }
+
       try {
         const user = { name, email, password };
         await AsyncStorage.setItem("user", JSON.stringify(user));
         console.log("Usuário cadastrado:", user);
+        Alert.alert('Sucesso', 'Usuário cadastrado com sucesso');
         navigation.navigate("Login");
       } catch (error) {
         console.error("Erro ao salvar o usuário:", error);
+        Alert.alert('Erro', 'Erro ao salvar o usuário');
       }
     } else {
-      console.log("Por favor, preencha todos os campos");
+      Alert.alert("Erro", "Por favor, preencha todos os campos");
     }
   };
 
