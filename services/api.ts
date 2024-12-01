@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://26.161.237.227:3000'; // Substitua pela URL correta da sua API
+// 'http://seuip:3000' pode funcionar dependendo do dispositivo e suas configuracoes 
+const BASE_URL = 'http://localhost:3000'; // Substitua pela URL correta da sua API
 
 const api = axios.create({
   baseURL: BASE_URL,

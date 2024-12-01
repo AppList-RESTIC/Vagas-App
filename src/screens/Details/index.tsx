@@ -7,7 +7,8 @@ import Logo from '../../components/Logo';
 import theme from '../../theme';
 import { Button } from '../../components/Button';
 
-const BASE_URL = 'http://26.161.237.227:3000'; // Substitua pela URL correta da sua API
+// 'http://seuip:3000' pode funcionar dependendo do dispositivo e suas configuracoes 
+const BASE_URL = 'http://localhost:3000'; // Substitua pela URL correta da sua API
 
 export default function Details({ route, navigation }) {
   const { id } = route.params;
